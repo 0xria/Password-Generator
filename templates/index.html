@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Roboto', sans-serif; background: #1c1c1c; color: #f0f0f0; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .container { background: #2c2c2c; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+    input, select { padding: 6px; margin: 5px; border-radius: 6px; border: none; }
+    button { padding: 8px 14px; border-radius: 6px; border: none; background: #ff6b6b; color: white; cursor: pointer; }
+    ul { text-align: left; list-style: none; padding-left: 0; }
+    code { background: #3c3c3c; padding: 4px 6px; border-radius: 4px; display: inline-block; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Password Generator</h1>
+  <form method="post">
+    Length: <input type="number" name="length" value="{{length}}" min="1">
+    Strength: 
+    <select name="strength">
+      <option value="weak" {% if strength=='weak' %}selected{% endif %}>weak</option>
+      <option value="medium" {% if strength=='medium' %}selected{% endif %}>medium</option>
+      <option value="strong" {% if strength=='strong' %}selected{% endif %}>strong</option>
+    </select>
+    <button type="submit">Generate 3</button>
+  </form>
+  {% if passwords %}
+  <h3>Suggestions:</h3>
+  <ul>
+    {% for p in passwords %}
+      <li><code>{{p}}</code></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+</body>
+</html>
