@@ -46,13 +46,3 @@ A professional-grade password generator similar to Google's password recommendat
 python3 pwgen_web.py
 Running on http://127.0.0.1:5000
 ```
-I Used: 
-
-blinker==1.9.0
-click==8.3.1
-colorama==0.4.6
-Flask==3.1.2
-itsdangerous==2.2.0
-Jinja2==3.1.6
-MarkupSafe==3.0.3
-Werkzeug==3.1.3
