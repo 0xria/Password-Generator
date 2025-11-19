@@ -7,19 +7,15 @@ app = Flask(__name__)
 @app.route("/", methods=["GET","POST"])
 def index():
     passwords = None
-    length = 12
+    length = 12 #default length given
     strength = "strong"
-    if request.method == "POST":
-        try:
-            length = int(request.form.get("length", 12))
-        except ValueError:
-            length = 12
-        strength = request.form.get("strength","strong")
-        passwords = generate_new_passwords(3, length=length, strength=strength)
-    return render_template("index.html", passwords=passwords, length=length, strength=strength)
 
-#routes for static files are handled automatically by Flask
+    if request.method == "POST":
+        strength = request.form.get("strength", "strong")
+        passwords = generate_new_passwords(3, length=length, strength=strength)
+
+    return render_template("index.html", passwords=passwords)
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=5000, debug=True)
-
+    app.run(host="0.0.0.0", port=port, debug=True)

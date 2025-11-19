@@ -11,7 +11,7 @@ length : int( recommended >= 12 for strong)
 Returns a string of randomly generate password
 """
 
-def generate_password(length=12, strength="strong"):
+def generate_password(length=15, strength="strong"):
     if length < 1:
         raise ValueError("Length must be >= 1")
     
